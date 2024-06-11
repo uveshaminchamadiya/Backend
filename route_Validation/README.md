@@ -2,15 +2,21 @@
 
 Creating an application which check valid user to access particular route.
 
-## How to setup Project
+## Setup
 
-1. Install Packages via pnpm
+1. Change Directory:
+
+```bash
+cd route_Validation
+```
+
+2. Install dependencies using pnpm:
 
 ```bash
 pnpm install
 ```
 
-2. Run the Express.js Server
+3. Start the server:
 
 ```bash
 pnpm start
