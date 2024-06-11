@@ -2,14 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-require('dotenv').config();
-
 
 const app = express();
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
-const secretKey = process.env.SECRET_KEY || 'dummyKey';
+const secretKey = process.env.SECRET_KEY || 'dummySecrectKey';
+const refreshSecretKey = process.env.REFRESH_SECRET_KEY || 'dummyRefreshSSecrectKey';
 
 //  Store User Data
 const users = [];
@@ -45,10 +44,30 @@ app.post('/login', async (req, res) => {
         return res.status(400).send({ message: 'Invalid credentials' });
     }
 
-    // Generate JWT
-    const token = jwt.sign({ username: user.username }, secretKey, { expiresIn: '1m' });
+    // Generate access token with short expiration time (1 minute)
+    const accessToken = jwt.sign({ username: user.username }, secretKey, { expiresIn: '1m' });
 
-    res.send({ token });
+    // Generate refresh token with longer expiration time (1 week)
+    const refreshToken = jwt.sign({ username: user.username }, refreshSecretKey, { expiresIn: '7d' });
+
+    res.send({ accessToken, refreshToken });
+});
+
+// Refresh token route
+app.post('/refresh-token', (req, res) => {
+    const { refreshToken } = req.body;
+
+    // Verify refresh token
+    jwt.verify(refreshToken, refreshSecretKey, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({ message: 'Invalid refresh token' });
+        }
+
+        // Generate new access token
+        const accessToken = jwt.sign({ username: decoded.username }, secretKey, { expiresIn: '1m' });
+
+        res.send({ accessToken });
+    });
 });
 
 // Protected route
@@ -58,7 +77,7 @@ app.get('/protected', (req, res) => {
         return res.status(401).send({ message: 'No token provided' });
     }
 
-    // Verify token
+    // Verify access token
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
             return res.status(401).send({ message: 'Invalid token' });
@@ -69,5 +88,5 @@ app.get('/protected', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${PORT}/`);
+    console.log('Server running on port 3000');
 });
