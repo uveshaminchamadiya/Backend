@@ -88,5 +88,5 @@ app.get('/protected', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('Server running on port 3000');
+    console.log('Server running on http://localhost:${PORT}/');
 });
