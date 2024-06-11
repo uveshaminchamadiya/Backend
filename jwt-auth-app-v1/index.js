@@ -58,7 +58,7 @@ app.get('/protected', (req, res) => {
         return res.status(401).send({ message: 'No token provided' });
     }
 
-    // Verify token
+    // Verify token 
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
             return res.status(401).send({ message: 'Invalid token' });
