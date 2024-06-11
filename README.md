@@ -8,7 +8,7 @@ Clone the repository to continue:
 git clone https://github.com/uveshaminchamadiya/Backend.git
 ```
 
-Backend repo which contains some concepts of Node.js and Express.js
+This repo contains some of the concepts of Node.js and Express.js
   - Each folder contains an individual concept
   - Instruction is given to set up the project on the local machine, for each folder (inside each folder).
 
