@@ -13,7 +13,7 @@ This is a simple Node.js application for user authentication using JSON Web Toke
 1. Clone the repository:
 
 ```bash
-cd jwt-auth-app
+cd jwt-auth-app-v1
 ```
 
 2. Install dependencies using pnpm:
