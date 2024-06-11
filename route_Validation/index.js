@@ -2,7 +2,7 @@ const express = require('express')
 // App Created
 const app = express();
 
-// Setting Routes
+// routes setting 
 app.get('/', (req, res) => {
     return res.status(200).send('<h1>Home Page<h1>');
 })
