@@ -25,5 +25,5 @@ pnpm install
 3. Start the server:
 
 ```bash
-Start the server:
+pnpm start
 ```

@@ -2,15 +2,21 @@
 
 Creating my first server using express.js
 
-## How to setup Project
+## Setup
 
-1. Install Packages via pnpm
+1. Change Directory:
+
+```bash
+cd firstServer_ExpressJS
+```
+
+2. Install dependencies using pnpm:
 
 ```bash
 pnpm install
 ```
 
-2. Run the Express.js Server
+3. Start the server:
 
 ```bash
 pnpm start
