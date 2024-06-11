@@ -1,0 +1,10 @@
+# Dependency directories
+/node_modules
+
+# Environment variables file
+.env
+
+# Dependency lock file
+pnpm-lock.yaml
+
+
