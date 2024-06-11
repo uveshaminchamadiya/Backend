@@ -1,6 +1,6 @@
 # Backend - (Node.js and Express.js)
 
-Backend repo which contain some concepts of Node.js and Express.js
-  - Each folder contain individual concept
-  - Instruction are given to setup project on local machine, for each folder inside each folder.
+Backend repo which contains some concepts of Node.js and Express.js
+  - Each folder contains an individual concept
+  - Instruction is given to set up the project on the local machine, for each folder (inside each folder).
 
